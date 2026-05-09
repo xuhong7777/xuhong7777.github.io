@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Xuhong Chen — Interface Spectroscopy</title>
+  <meta name="description" content="Xuhong Chen, PhD candidate in Chemistry at the University of Michigan. Molecular structures at buried interfaces via SFG vibrational spectroscopy.">
+  <meta property="og:title" content="Xuhong Chen — Interface Spectroscopy">
+  <meta property="og:description" content="PhD candidate in Chemistry at the University of Michigan. SFG vibrational spectroscopy for buried interfaces.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://xuhong7777.github.io/">
+  <meta property="og:image" content="https://scholar.googleusercontent.com/citations?view_op=medium_photo&user=LrjCImYAAAAJ&citpid=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --text: #2c2c2c;
+      --text-secondary: #6b6560;
+      --heading: #1a1a1a;
+      --accent: #1a4a6e;
+      --accent-hover: #0f3450;
+      --accent-faint: rgba(26, 74, 110, 0.06);
+      --bg: #faf8f5;
+      --bg-hero: #f0ebe4;
+      --border: #d8d0c6;
+      --border-light: rgba(200, 191, 180, 0.35);
+      --serif: 'Cormorant Garamond', 'Georgia', serif;
+      --sans: 'Source Sans 3', 'Segoe UI', sans-serif;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      color: var(--text);
+      line-height: 1.78;
+      font-size: 15.5px;
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--accent); text-decoration: none; transition: color 0.2s; }
+    a:hover { color: var(--accent-hover); }
+
+    ::selection {
+      background: rgba(26, 74, 110, 0.12);
+      color: var(--heading);
+    }
+
+    /* ── Navigation ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(250, 248, 245, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    nav ul {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0.65rem 2rem;
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav a {
+      color: var(--text-secondary);
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding-bottom: 2px;
+      border-bottom: 1px solid transparent;
+      transition: color 0.2s, border-color 0.3s;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ── Hero ── */
+    .hero-wrap {
+      background: var(--bg-hero);
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .hero {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 3rem 2rem 2.5rem;
+      display: flex;
+      gap: 2rem;
+      align-items: flex-start;
+    }
+
+    .portrait {
+      width: 115px;
+      height: 142px;
+      flex-shrink: 0;
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .portrait .initials {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--serif);
+      font-size: 2.1rem;
+      font-weight: 400;
+      color: var(--accent);
+      background: linear-gradient(160deg, #ede7de, #f5f0e9);
+      letter-spacing: 0.12em;
+    }
+
+    .portrait img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-content h1 {
+      font-family: var(--serif);
+      font-size: 2.6rem;
+      font-weight: 400;
+      color: var(--heading);
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+    }
+
+    .hero-content .affiliation {
+      font-family: var(--sans);
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      letter-spacing: 0.03em;
+      margin-top: 0.35rem;
+    }
+
+    .rule {
+      width: 48px;
+      height: 1px;
+      background: var(--accent);
+      margin: 1rem 0;
+      opacity: 0.5;
+    }
+
+    .hero-content .about-text {
+      font-size: 0.94rem;
+      line-height: 1.8;
+      max-width: 580px;
+      color: var(--text);
+    }
+
+    .contact-row {
+      margin-top: 0.9rem;
+      font-size: 0.84rem;
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-row a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .contact-row a::before {
+      content: '';
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--accent);
+      opacity: 0.4;
+    }
+
+    .contact-row a:first-child::before { display: none; }
+
+    /* ── Main ── */
+    main {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 2rem 4rem;
+    }
+
+    /* ── Sections ── */
+    section {
+      padding: 2.2rem 0 0.5rem;
+    }
+
+    section h2 {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--heading);
+      letter-spacing: 0.01em;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.2rem;
+    }
+
+    section h2::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, var(--border), transparent 90%);
+    }
+
+    section h3 {
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--heading);
+      letter-spacing: 0.02em;
+      margin: 1.5rem 0 0.5rem;
+      padding-left: 0.75rem;
+      border-left: 2px solid var(--accent);
+    }
+
+    section h3:first-of-type { margin-top: 0.8rem; }
+
+    section p {
+      font-size: 0.94rem;
+      margin-bottom: 0.7rem;
+      line-height: 1.8;
+    }
+
+    /* ── Publications ── */
+    .pub-list {
+      list-style: none;
+      counter-reset: pub;
+    }
+
+    .pub-list li {
+      counter-increment: pub;
+      position: relative;
+      padding: 0.7rem 0.8rem 0.7rem 2.5rem;
+      font-size: 0.9rem;
+      line-height: 1.7;
+      border-left: 2px solid transparent;
+      border-bottom: 1px solid var(--border-light);
+      transition: border-left-color 0.25s, background 0.25s;
+    }
+
+    .pub-list li:last-child { border-bottom: none; }
+
+    .pub-list li:hover {
+      border-left-color: var(--accent);
+      background: var(--accent-faint);
+    }
+
+    .pub-list li::before {
+      content: counter(pub);
+      position: absolute;
+      left: 0.2rem;
+      top: 0.75rem;
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--accent);
+      opacity: 0.7;
+    }
+
+    .pub-list .journal {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    .pub-list .doi {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      opacity: 0.7;
+      margin-left: 0.15rem;
+    }
+
+    .pub-list .doi:hover { opacity: 1; }
+
+    .pub-list .status {
+      display: inline-block;
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.1rem 0.5rem;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      color: var(--text-secondary);
+      vertical-align: middle;
+    }
+
+    /* ── Presentations ── */
+    .pres-list { list-style: none; }
+
+    .pres-list li {
+      padding: 0.4rem 0;
+      font-size: 0.9rem;
+      line-height: 1.7;
+      display: flex;
+      gap: 0.6rem;
+      align-items: baseline;
+    }
+
+    .pres-type {
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #fff;
+      background: var(--accent);
+      padding: 0.15rem 0.45rem;
+      border-radius: 2px;
+      flex-shrink: 0;
+      line-height: 1.4;
+    }
+
+    .pres-venue {
+      font-family: var(--serif);
+      font-style: italic;
+    }
+
+    /* ── Bottom Grid ── */
+    .bottom-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 3rem;
+      margin-top: 0.5rem;
+    }
+
+    .bottom-grid .col { }
+
+    .bottom-grid h3 {
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-secondary);
+      margin: 1.2rem 0 0.5rem;
+      padding-left: 0;
+      border-left: none;
+    }
+
+    .bottom-grid h3:first-child { margin-top: 0; }
+
+    .compact-list {
+      list-style: none;
+      font-size: 0.88rem;
+    }
+
+    .compact-list li {
+      padding: 0.2rem 0;
+      display: flex;
+      justify-content: space-between;
+      gap: 0.8rem;
+    }
+
+    .compact-list .year {
+      color: var(--text-secondary);
+      flex-shrink: 0;
+      font-size: 0.84rem;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.3rem 0.9rem;
+      font-size: 0.88rem;
+    }
+
+    .skills-grid dt {
+      font-weight: 600;
+      color: var(--heading);
+      white-space: nowrap;
+      font-size: 0.84rem;
+    }
+
+    .skills-grid dd {
+      margin: 0;
+      color: var(--text-secondary);
+    }
+
+    /* ── Footer ── */
+    footer {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 1.5rem 2rem;
+      border-top: 1px solid var(--border-light);
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 0.78rem;
+      letter-spacing: 0.02em;
+    }
+
+    footer a { color: var(--text-secondary); }
+    footer a:hover { color: var(--accent); }
+
+    /* ── Scroll Animations ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* stagger children */
+    .fade-in:nth-child(2) { transition-delay: 0.08s; }
+    .fade-in:nth-child(3) { transition-delay: 0.16s; }
+    .fade-in:nth-child(4) { transition-delay: 0.24s; }
+
+    /* ── Responsive ── */
+    @media (max-width: 640px) {
+      .hero {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 2rem 1.5rem;
+      }
+      .portrait { width: 100px; height: 124px; }
+      .rule { margin: 0.8rem auto; }
+      .contact-row { justify-content: center; }
+      main { padding: 0 1.5rem 3rem; }
+      nav ul { gap: 1.2rem; flex-wrap: wrap; justify-content: center; padding: 0.6rem 1rem; }
+      .bottom-grid { grid-template-columns: 1fr; gap: 0; }
+      .hero-content h1 { font-size: 2rem; }
+      section h2 { font-size: 1.3rem; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .compact-list li { flex-direction: column; gap: 0; }
+      .compact-list .year { margin-left: 0; }
+      .pres-list li { flex-direction: column; gap: 0.2rem; }
+    }
+
+    /* ── Print ── */
+    @media print {
+      nav, .portrait { display: none; }
+      .hero-wrap { background: none; border: none; }
+      .fade-in { opacity: 1; transform: none; }
+      section { padding: 0.8rem 0; }
+      body { font-size: 10.5pt; background: #fff; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <ul>
+    <li><a href="#about" class="active">About</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#presentations">Talks</a></li>
+    <li><a href="#more">More</a></li>
+  </ul>
+</nav>
+
+<!-- ── Hero ── -->
+<div class="hero-wrap">
+  <div class="hero" id="about">
+    <div class="portrait">
+      <img src="https://scholar.googleusercontent.com/citations?view_op=medium_photo&user=LrjCImYAAAAJ&citpid=1" alt="Xuhong Chen">
+    </div>
+    <div class="hero-content">
+      <h1>Xuhong Chen</h1>
+      <div class="affiliation">PhD Candidate &middot; <a href="https://lsa.umich.edu/chem/people/faculty/zhanc.html" target="_blank" rel="noopener">Zhan Chen Group</a> &middot; Department of Chemistry &middot; University of Michigan</div>
+      <div class="rule"></div>
+      <p class="about-text">
+        I use Sum Frequency Generation (SFG) vibrational spectroscopy &mdash; a nonlinear optical technique intrinsically selective to interfaces &mdash; to reveal molecular structures at buried boundaries that bulk techniques cannot access. In my doctoral work, I established direct links between interfacial molecular rearrangement and macroscopic adhesion in industrial polymer systems (with Dow Chemical), and resolved therapeutic antibody conformations at buried solid/liquid interfaces <em>in situ</em> (with Bristol-Myers Squibb and BASF). I will complete my PhD in May 2026 and am actively seeking postdoctoral positions.
+      </p>
+      <div class="contact-row">
+        <a href="mailto:xuhongc@umich.edu">xuhongc@umich.edu</a>
+        <a href="https://scholar.google.com/citations?user=LrjCImYAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
+        <a href="https://www.researchgate.net/scientific-contributions/Xuhong-Chen-2255975854" target="_blank" rel="noopener">ResearchGate</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main>
+
+  <!-- ── Research ── -->
+  <section id="research" class="fade-in">
+    <h2>Research</h2>
+    <p>
+      Buried interfaces &mdash; boundaries between two materials &mdash; govern adhesion, stability, and function across material systems, yet they are notoriously difficult to study. Most spectroscopic techniques report on the bulk; the interface itself is invisible. Sum Frequency Generation (SFG) vibrational spectroscopy overcomes this limitation. As a second-order nonlinear optical process, SFG generates signal only at interfaces where inversion symmetry is broken, making it intrinsically surface-selective and uniquely capable of probing buried boundaries <em>in situ</em>.
+    </p>
+
+    <h3>Polymer Interfaces &amp; Adhesion</h3>
+    <p>
+      In collaboration with Dow Chemical Company, I investigated how corona surface treatment restructures molecular groups at polyurethane adhesive&ndash;polypropylene buried interfaces and enhances adhesion, establishing direct structure&ndash;property relationships at these industrially relevant boundaries. Extending this work, I examined temperature-dependent polyurethane interactions with nylon and alumina substrates, revealing how thermal conditions alter interfacial molecular arrangements.
+    </p>
+
+    <h3>Biopharmaceutical Interfaces</h3>
+    <p>
+      Working with Bristol-Myers Squibb and BASF, I characterized the conformational behavior of therapeutic antibodies &mdash; IgG-1, IgG-4, and Omalizumab &mdash; at buried polymer/solution interfaces, providing molecular-level insight into how biologics interact with material surfaces during manufacturing and storage.
+    </p>
+
+    <h3>Outlook</h3>
+    <p>
+      Looking ahead, I aim to bring interface-selective spectroscopy to new classes of buried interfaces &mdash; particularly in energy-relevant systems, where molecular-level understanding of interphase formation and ion transport remains an open challenge. I am especially drawn to research environments where experimental SFG measurements can inform and be informed by computational modeling, enabling mechanistic insight that neither approach achieves alone.
+    </p>
+  </section>
+
+  <!-- ── Publications ── -->
+  <section id="publications" class="fade-in">
+    <h2>Publications</h2>
+    <ol class="pub-list">
+      <li>
+        Wu, G., Fang, J., Shrawankar, K., Guo, W., Nagao, S., <strong>Chen, X.</strong>, Wu, Y., Wei, T., and Chen, Z.
+        Elucidation of the Effects of Electrostatic Interactions on Protein Structures at Buried Solid/Liquid Interfaces.
+        <span class="journal">Analytical Chemistry</span> 98 (10), 7676&ndash;7684, 2026.
+        <a class="doi" href="https://pubs.acs.org/doi/10.1021/acs.analchem.5c07876" target="_blank" rel="noopener">doi</a>
+      </li>
+      <li>
+        Gan, J., <strong>Chen, X.</strong>, Wu, G., Dong, Y., Guo, Y., Paradkar, R., Chen, X., Kuo, T.-C., and Chen, Z.
+        Molecular Structural Changes of Buried Interfaces in Stretched Multilayer Polymer Films and Their Influences on Film Properties.
+        <span class="journal">Langmuir</span> 41 (51), 34335&ndash;34343, 2025.
+        <a class="doi" href="https://pubs.acs.org/doi/10.1021/acs.langmuir.5c04533" target="_blank" rel="noopener">doi</a>
+      </li>
+      <li>
+        Wu, Y., Gandhi, Z., Rossi, D., Guo, W., <strong>Chen, X.</strong>, Gomez, F., Lu, T., Smith, J.&nbsp;P., Deng, J.&nbsp;Z., and Chen, Z.
+        Investigating Interfacial Interactions between the Adjuvant and Antigens in Pneumococcal Conjugate Vaccine In Situ at the Molecular Level.
+        <span class="journal">Analytical Chemistry</span> 97 (37), 20361&ndash;20371, 2025.
+        <a class="doi" href="https://pubs.acs.org/doi/10.1021/acs.analchem.5c03598" target="_blank" rel="noopener">doi</a>
+      </li>
+      <li>
+        <strong>Chen, X.</strong>, Rossi, D., Guo, Y., Wan, Q.&nbsp;G., Chen, X., Mohler, C.&nbsp;E., Kuo, T.-C., and Chen, Z.
+        Effect of Corona Treatment on the Adhesion between a Two-Component Polyurethane Adhesive and Polypropylene.
+        <span class="journal">Macromolecules</span> 57 (14), 6646&ndash;6656, 2024.
+        <a class="doi" href="https://pubs.acs.org/doi/10.1021/acs.macromol.4c00897" target="_blank" rel="noopener">doi</a>
+      </li>
+      <li>
+        Gao, J., Rossi, D., <strong>Chen, X.</strong>, Choi, F., Borst, J., Hankett, J., Varanasi, P.&nbsp;P., and Chen, Z.
+        Corn Oil&ndash;Water Separation: Interfacial Behavior of Extended Surfactant and Glutelin.
+        <span class="journal">Langmuir</span> 39 (29), 10088&ndash;10097, 2023.
+        <a class="doi" href="https://pubs.acs.org/doi/10.1021/acs.langmuir.3c01027" target="_blank" rel="noopener">doi</a>
+      </li>
+      <li>
+        <strong>Chen, X.</strong>, Wu, Y., Hu, E., Santos, D., Guo, Y., Wan, G., Chen, X., Kuo, T.-C., and Chen, Z.
+        Molecular-Level Insights into Temperature-Dependent Polyurethane Interactions with Nylon and Al&#8322;O&#8323; at Interfaces.
+        <span class="status">Under Review</span>
+      </li>
+      <li>
+        <strong>Chen, X.</strong>, Gandhi, Z., Wu, G., Hu, E., Kanthe, A.&nbsp;D., Pan, D., and Chen, Z.
+        Molecular Behavior of Antibodies IgG-1 and IgG-4 at Buried Polymer/Solution Interfaces Probed by Sum Frequency Generation Vibrational Spectroscopy.
+        <span class="status">Under Review</span>
+      </li>
+      <li>
+        <strong>Chen, X.</strong>, Wu, G., Wu, Y., Shrawankar, K., Gandhi, Z., Schneider, C., Loew, N., Gupta, R., Hankett, J.&nbsp;M., Holcombe, T., Kellermeier, M., and Chen, Z.
+        Molecular Structures and Surfactant Influence of Omalizumab at Buried Solid/Liquid Interfaces.
+        <span class="status">Under Review</span>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ── Presentations ── -->
+  <section id="presentations" class="fade-in">
+    <h2>Presentations</h2>
+    <ul class="pres-list">
+      <li>
+        <span class="pres-type">Talk</span>
+        <span>Determine Antibody Molecular Structure at Buried Solid/Liquid Interface in Situ.
+        <span class="pres-venue">NORA</span>, 2025.</span>
+      </li>
+      <li>
+        <span class="pres-type">Talk</span>
+        <span>Elucidating Molecular Mechanism on Adhesion Enhancement by Corona Treatment.
+        <span class="pres-venue">UMich Agilent Symposium on Measurement Science</span>, 2024.</span>
+      </li>
+      <li>
+        <span class="pres-type">Talk</span>
+        <span>Elucidating Molecular Mechanism on Adhesion Enhancement by Corona Treatment.
+        <span class="pres-venue">Adhesion Society Meeting</span>, 2024.</span>
+      </li>
+      <li>
+        <span class="pres-type">Poster</span>
+        <span>Elucidating Molecular Mechanism on Adhesion Enhancement by Corona Treatment.
+        <span class="pres-venue">MMRI Annual Summit</span>, 2024.</span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ── More ── -->
+  <section id="more" class="fade-in">
+    <h2>Background</h2>
+    <div class="bottom-grid">
+      <div class="col">
+        <h3>Education</h3>
+        <ul class="compact-list">
+          <li>
+            <span>Ph.D. Chemistry, University of Michigan<br><small style="color:var(--text-secondary)">Advisor: Prof. Zhan Chen</small></span>
+            <span class="year">2021 &ndash; 26</span>
+          </li>
+          <li>
+            <span>B.S. Chemistry, Nanjing University</span>
+            <span class="year">2016 &ndash; 20</span>
+          </li>
+        </ul>
+
+        <h3>Awards</h3>
+        <ul class="compact-list">
+          <li>
+            <span>Sokol, Margaret &amp; Herman Fellowship</span>
+            <span class="year">2025</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="col">
+        <h3>Technical Expertise</h3>
+        <dl class="skills-grid">
+          <dt>Spectroscopy</dt>
+          <dd>SFG, FTIR, Raman</dd>
+          <dt>Surfaces</dt>
+          <dd>Contact Angle, Corona Treatment, AFM</dd>
+          <dt>Lasers</dt>
+          <dd>ps &amp; fs systems</dd>
+          <dt>Software</dt>
+          <dd>MATLAB, LabVIEW, Origin</dd>
+        </dl>
+
+        <h3>Teaching</h3>
+        <ul class="compact-list">
+          <li><span>Phys. Chem. Lab (462)</span><span class="year">F 2022</span></li>
+          <li><span>Organic Chem. Lab (210)</span><span class="year">S 2022</span></li>
+          <li><span>Gen. Chem. Lab (112)</span><span class="year">F 2021</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  Xuhong Chen &middot; Department of Chemistry &middot; University of Michigan &middot;
+  <a href="mailto:xuhongc@umich.edu">xuhongc@umich.edu</a>
+</footer>
+
+<script>
+  // Scroll-triggered fade-in
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Active nav tracking
+  const sections = document.querySelectorAll('section, .hero-wrap');
+  const navLinks = document.querySelectorAll('nav a');
+  const navObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id || entry.target.querySelector('[id]')?.id;
+        navLinks.forEach(a => {
+          a.classList.toggle('active', a.getAttribute('href') === '#' + id);
+        });
+      }
+    });
+  }, { rootMargin: '-25% 0px -75% 0px' });
+  sections.forEach(s => navObserver.observe(s));
+</script>
+
+</body>
+</html>
